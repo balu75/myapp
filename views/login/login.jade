@@ -1,0 +1,21 @@
+extends /views/layout
+
+block content
+   form(method='post')
+      fieldset
+         legend Bitte loggen Sie sich ein
+
+         if errors
+            .errors Es sind folgende Fehler aufgetreten:
+               ul
+                  each error in errors
+                     li= error
+
+         p
+            input(type='text' name='email') 
+            label(for='email') Email
+         p
+            input(type='password' name='password') 
+            label(for='password') Passwort
+         p
+            button(type='submit') Anmelden

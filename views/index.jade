@@ -1,0 +1,19 @@
+extends layout
+
+block content
+   h1= title
+   p Welcome to #{title}
+
+   table
+      each quote in quotes
+       tr
+         td #{quote.name} sagt: "#{quote.quote}" , #{quote.egal}
+         td
+            form(action="/data/delete/"+quote._id, method="GET")
+               button(type="submit") löschen
+
+   form(action="/data", method="POST")
+      input(type="text", placeholder="name", name="name")
+      input(type="text", placeholder="quote", name="quote")
+      input(type="text", placeholder="quote", name="egal")
+      button(type="submit") submit

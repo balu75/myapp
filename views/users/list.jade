@@ -1,0 +1,47 @@
+extends /views/layout
+
+block content
+   table
+      th Vorname
+      th Nachname
+      th Email
+      each user in users
+         tr
+            td= user.firstname
+            td= user.lastname
+            td= user.email
+            td
+               a(href='/users/delete/' + user._id) Löschen
+
+         
+   form(method='post' enctype="multipart/form-data")
+      fieldset
+         legend Einen neuen Benutzer anlegen
+
+         if errors
+            .errors Es sind folgende Fehler aufgetreten:
+               ul
+                  each error in errors
+                     li= error
+
+         p
+            input(type='text' name='firstname', value='#{user.firstname}') 
+            label(for='firstname') Vorname
+         p
+            input(type='text' name='lastname', value='#{user.lastname}') 
+            label(for='lastname') Nachname
+         p
+            input(type='text' name='email', value='#{user.email}') 
+            label(for='email') Email
+         p
+            input(type='file' name='picture')
+            label(for='picture') Ihr Bild
+         p
+            input(type='password' name='password') 
+            label(for='password') Passwort
+         p
+            input(type='password' name='password_validation') 
+            label(for='password_validation') Passwort (Wiederholung) 
+         p
+            button(type='submit') Anlegen
+   
