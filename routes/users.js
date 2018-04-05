@@ -20,18 +20,18 @@ router.get('/', function(req, res, next) {
 /* POST Users page. */
 router.post('/', function(req, res, next) {
    var user = {
-      firstname: req.fields.firstname,
-      lastname: req.fields.lastname,
-      email: req.fields.email,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
    };
 
    var errors = [];
 
-   if (req.fields.password != req.fields.password_validation) {
+   if (req.body.password != req.body.password_validation) {
       errors.push('Das Passwort wurde nicht korrekt 2x eingegeben');
    }
 
-   if (req.fields.password.length == 0) {
+   if (req.body.password.length == 0) {
       errors.push('Das Passwort ist leer')
    }
 
@@ -46,11 +46,6 @@ router.post('/', function(req, res, next) {
    if (user.email.length == 0) {
       errors.push('Die Email Adresse ist leer');
    }
-   
-   //console.log("filepath: " + req.files[0].path);
-   console.log(util.inspect(req.files));
-   console.log(req.files.picture.path);
-
 
    if (errors.length > 0) {
       showUsers(req, res, user, errors);

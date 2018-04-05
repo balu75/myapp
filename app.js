@@ -16,6 +16,23 @@ const url = 'mongodb://localhost:27017/';
 
 var app = express();
 
+app.use(function (req, res, next) {
+   var form = new formidable.IncomingForm({
+      encoding: 'utf-8',
+      uploadDir:  path.join(__dirname, 'uploads'),
+      multiples: true,
+      keepExtensions: true
+   })
+   form.once('error', console.log);
+   form.parse(req, function (err, fields, files) {
+      console.log("fields: " + fields);
+      console.log("files: " + files);
+      req.body = fields;
+      req.files = files;
+      next();
+   })
+})
+
 var db;
 MongoClient.connect(url, function(err, client) {
    if (err) return console.error(err);
@@ -33,17 +50,12 @@ app.use(cookieSession({
      secret: 'Quaiqu4Un2cied8Haeh8hohge',
 }));
 
-
-//app.use(bodyParser.urlencoded({extended: true}));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.locals.basedir = __dirname;
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(lessMiddleware(path.join(__dirname,'/public')));
@@ -59,19 +71,6 @@ app.use(function(req, res, next) {
    }
 });
 
-app.use(function (req, res, next) {
-   var form = new formidable.IncomingForm({
-      encoding: 'utf-8',
-      uploadDir:  path.join(__dirname, 'uploads'),
-      multiples: true,
-      keepExtensions: true
-   })
-   form.once('error', console.log)
-   form.parse(req, function (err, fields, files) {
-      Object.assign(req, {fields, files});
-      next();
-   })
-})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
