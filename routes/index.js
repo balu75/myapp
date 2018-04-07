@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-const findDocuments = function(db, callback) {
+var findDocuments = function(db, callback) {
   // Get the documents collection
   db.collection('documents').find({}).toArray(function(err, docs) {
     callback(docs);
   });
-}
+};
 
 /* GET home page. */
 router.get('/data', function(req, res, next) {
