@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
    }
 
    if (req.body.password.length == 0) {
-      errors.push('Das Passwort ist leer')
+      errors.push('Das Passwort ist leer');
    }
 
    if (user.firstname.length == 0) {
