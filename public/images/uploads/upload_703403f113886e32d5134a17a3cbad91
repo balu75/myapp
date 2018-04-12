@@ -1,1 +1,0 @@
-mplayer http://ice1.somafm.com/dronezone-256-mp3 -dumpstream -dumpfile dronezone.mp3
