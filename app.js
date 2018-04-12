@@ -1,5 +1,3 @@
-//new comment
-
 var createError = require('http-errors');
 var express = require('express');
 var formidable = require('formidable');
@@ -21,17 +19,15 @@ var app = express();
 app.use(function (req, res, next) {
   var form = new formidable.IncomingForm({
     encoding: 'utf-8',
-    uploadDir: path.join(__dirname, 'uploads'),
+    uploadDir: path.join(__dirname, 'public/images/uploads'),
     multiples: true,
     keepExtensions: true
   });
   form.once('error', console.log);
   form.parse(req, function (err, fields, files) {
     if (err) {
-      console.log('ljljlj');
+      console.log('The form produced an error');
     }
-    console.log('fields: ' + fields);
-    console.log('files: ' + files);
     req.body = fields;
     req.files = files;
     next();
