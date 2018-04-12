@@ -19,7 +19,7 @@ var app = express();
 app.use(function (req, res, next) {
   var form = new formidable.IncomingForm({
     encoding: 'utf-8',
-    uploadDir: path.join(__dirname, 'uploads'),
+    uploadDir: path.join(__dirname, 'public/images/uploads'),
     multiples: true,
     keepExtensions: true
   });
@@ -28,8 +28,6 @@ app.use(function (req, res, next) {
     if (err) {
       console.log('The form produced an error');
     }
-    console.log('fields: ' + fields);
-    console.log('files: ' + files);
     req.body = fields;
     req.files = files;
     next();

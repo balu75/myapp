@@ -5,13 +5,16 @@ block content
       th Vorname
       th Nachname
       th Email
+      th Name des Bildes
       each user in users
          tr
             td= user.firstname
             td= user.lastname
             td= user.email
+            td 
+              img(src='/images/uploads/#{user.pictureid}')
             td
-               a(href='/users/delete/' + user._id) Löschen
+              a(href='/users/delete/' + user._id) Löschen
 
          
    form(method='post' enctype="multipart/form-data")
