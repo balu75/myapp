@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var util = require('util');
 var bcrypt = require('bcrypt');
+var path = require('path');
 
 function showUsers(req, res, user, errors) {
    req.db.collection('users').find({}).toArray(function(err, users) {
@@ -32,7 +33,7 @@ router.post('/', function(req, res, next) {
    }
 
    if (req.body.password.length == 0) {
-      errors.push('Das Passwort ist leer')
+      errors.push('Das Passwort ist leer');
    }
 
    if (user.firstname.length == 0) {
