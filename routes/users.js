@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var util = require('util');
 var bcrypt = require('bcrypt');
 var path = require('path');
-var util = require('util');
 
 function showUsers(req, res, user, errors) {
   req.db.collection('users').find({}).toArray(function(err, users) {
@@ -12,15 +10,15 @@ function showUsers(req, res, user, errors) {
 }
 
 /* GET Users page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   showUsers(req, res, {
-    firstname: "",
-    lastname: "",
-    email: ""});
+    firstname: '',
+    lastname: '',
+    email: ''});
 });
 
 /* POST Users page. */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
   var user = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -28,8 +26,6 @@ router.post('/', function(req, res, next) {
   };
 
   var errors = [];
-
-  console.log("Files:" + util.inspect(req.files, false, null));
 
   if (req.files.picture != undefined) {
     user.pictureid = path.basename(req.files.picture.path);
@@ -68,8 +64,8 @@ router.post('/', function(req, res, next) {
 });
 
 /* DELETE Users page. */
-router.get('/delete/:id', function(req, res, next) {
-  req.db.collection('users').remove({"_id": req.ObjectId(req.params.id)});
+router.get('/delete/:id', function(req, res) {
+  req.db.collection('users').remove({'_id': req.ObjectId(req.params.id)});
   res.redirect('/users');
 });
 
