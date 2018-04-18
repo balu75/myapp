@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+db	app.js	/^  db = client.db('myproject');$/;"	P
+email	routes/users.js	/^    email: ""});$/;"	P
+email	routes/users.js	/^    email: req.body.email,$/;"	P
+encoding	app.js	/^    encoding: 'utf-8',$/;"	P
+errors	routes/login.js	/^               var errors = ["Das Passwort stimmte nicht überein"];$/;"	A
+errors	routes/login.js	/^         var errors = ["Der Benutzer konnte nicht gefunden werden"];$/;"	A
+errors	routes/login.js	/^         var errors = ["Es ist ein allgemeiner Fehler aufgetreten"];$/;"	A
+errors	routes/users.js	/^  var errors = [];$/;"	A
+findDocuments	routes/index.js	/^var findDocuments = function(db, callback) {$/;"	F
+firstname	routes/users.js	/^    firstname: "",$/;"	P
+firstname	routes/users.js	/^    firstname: req.body.firstname,$/;"	P
+form	app.js	/^  var form = new formidable.IncomingForm({$/;"	V
+keepExtensions	app.js	/^    keepExtensions: true$/;"	P
+lastname	routes/users.js	/^    lastname: "",$/;"	P
+lastname	routes/users.js	/^    lastname: req.body.lastname,$/;"	P
+multiples	app.js	/^    multiples: true,$/;"	P
+name	app.js	/^  name: 'session',$/;"	P
+secret	app.js	/^  secret: 'Quaiqu4Un2cied8Haeh8hohge'$/;"	P
+showUsers	routes/users.js	/^function showUsers(req, res, user, errors) {$/;"	F
+uploadDir	app.js	/^    uploadDir: path.join(__dirname, 'public\/images\/uploads'),$/;"	P
+url	app.js	/^var url = 'mongodb:\/\/localhost:27017\/';$/;"	V
+user	routes/users.js	/^  var user = {$/;"	O
